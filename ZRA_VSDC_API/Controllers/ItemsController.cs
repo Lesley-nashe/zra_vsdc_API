@@ -6,6 +6,15 @@ using ZRA_VSDC_API.Models.Dto;
 
 namespace ZRA_VSDC_API.Controllers
 {
+    public class Response {
+        public required string ResultCd {get;set;}
+
+        public required string ResultMsg {get;set;}
+
+        public DateTime Date {get;set;}
+    }
+
+
     [Route("api/[controller]")]
     [ApiController]
     public class ItemsController : ControllerBase
@@ -18,7 +27,7 @@ namespace ZRA_VSDC_API.Controllers
         }
 
 
-        [HttpGet("{TPin: int}", Name = "GetItem" )]
+        [HttpGet("{TPin:int}", Name = "GetItem" )]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<Item> GetItem(int TPin){
 
@@ -28,14 +37,28 @@ namespace ZRA_VSDC_API.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Item> SaveItem([FromBody]Item item){
-
-            
-
-                 return CreatedAtRoute("GetItem", new { TPin = item.TPin}, item);
-
-            
+        public ActionResult<Item> SaveItem([FromBody]Item item)
+        {
+                if(item is not null)
+                {
+                    if(Data.items.FirstOrDefault(u => u.TPin == item.TPin) != null)
+                    {
+                         // Error handling when creating a item that already exists
+                            ModelState.AddModelError("CustomError","Item Already Exists");
+                            return BadRequest(ModelState);
+                    }
+                    if(item == null)return BadRequest(item);
+                    Data.items.Add(item);
+                    var response = new Response() 
+                    {
+                        ResultCd = "000",
+                        ResultMsg = "It is succeeded",
+                        Date = DateTime.Now
+                    };
+                    return Ok(response);
+                } else {
+                     return BadRequest("Item could not be created");
+                };
         }
-        
     }
 }

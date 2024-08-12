@@ -30,3 +30,4 @@ C:\Users\lesli\OneDrive\Desktop\zra_vsdc_API\ZRA_VSDC_API\obj\Debug\net8.0\refin
 C:\Users\lesli\OneDrive\Desktop\zra_vsdc_API\ZRA_VSDC_API\obj\Debug\net8.0\ZRA_VSDC_API.pdb
 C:\Users\lesli\OneDrive\Desktop\zra_vsdc_API\ZRA_VSDC_API\obj\Debug\net8.0\ZRA_VSDC_API.genruntimeconfig.cache
 C:\Users\lesli\OneDrive\Desktop\zra_vsdc_API\ZRA_VSDC_API\obj\Debug\net8.0\ref\ZRA_VSDC_API.dll
+C:\Users\lesli\OneDrive\Desktop\zra_vsdc_API\ZRA_VSDC_API\obj\Debug\net8.0\ZRA_VSDC_API.sourcelink.json

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ZRA_VSDC_API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1cfac6896d891610f0f69c26c2607a77625f44a6")]
 [assembly: System.Reflection.AssemblyProductAttribute("ZRA_VSDC_API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ZRA_VSDC_API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
