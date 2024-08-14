@@ -29,14 +29,21 @@ namespace ZRA_VSDC_API.Controllers
 
         [HttpGet("{TPin:int}", Name = "GetItem" )]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<Item> GetItem(int TPin){
-
+        public ActionResult<Item> GetItem(int TPin)
+        {
+            if(TPin == 0)
+            {
+                return BadRequest();
+            }
             var item = Data.items.FirstOrDefault(u => u.TPin == TPin);
+            if(item == null) return NotFound();
 
             return Ok(item);
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<Item> SaveItem([FromBody]Item item)
         {
                 if(item is not null)
@@ -59,6 +66,19 @@ namespace ZRA_VSDC_API.Controllers
                 } else {
                      return BadRequest("Item could not be created");
                 };
+        }
+
+        [HttpPut("{TPin:int}", Name = "UpdateItem")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<Item> UpdateItem(int TPin, [FromBody] Item updateItem)
+        {
+            if(TPin != updateItem.TPin) return BadRequest();
+            var item = Data.items.FirstOrDefault(u => u.TPin == TPin);
+            if(item == null) return NotFound();
+            item.ItemNm = updateItem.ItemNm;
+            return Ok(item) ;
         }
     }
 }
